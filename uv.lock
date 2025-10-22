@@ -1,0 +1,22 @@
+version = 1
+requires-python = ">=3.10"
+
+[[package]]
+name = "pi-stats-server"
+version = "0.1.0"
+source = { virtual = "." }
+dependencies = [
+    { name = "vcgencmd" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "vcgencmd", specifier = ">=0.1.1" }]
+
+[[package]]
+name = "vcgencmd"
+version = "0.1.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/d8/ec/89d81e26b497ce982cc9b17ed4ae94992713f6df2b2d021a41d4f1308582/vcgencmd-0.1.1.tar.gz", hash = "sha256:e0bb21af74d7f4e04ffe97262a54cb398f94f5139717c175ab66c101312ac94b", size = 6285 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/84/43/4d9082fabeeb74033b8861899ead47019b1b366cdb539f281141993dd6b9/vcgencmd-0.1.1-py3-none-any.whl", hash = "sha256:3fb3b4598a47ee9d4115f90ad5fbd16dc6f687871ce7f010350f5022d3c2c849", size = 7179 },
+]

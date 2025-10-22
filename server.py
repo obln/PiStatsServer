@@ -1,6 +1,8 @@
+import json
+
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from urllib.parse import urlparse
-import json
+from argparse import ArgumentParser
 
 from vcgencmd import Vcgencmd
 
@@ -34,5 +36,13 @@ class Handler(BaseHTTPRequestHandler):
             self.send_response(404)
             self.end_headers()
 
-vcgm = Vcgencmd()
-HTTPServer(("127.0.0.1", 8000), Handler).serve_forever()
+
+if __name__ == "__main__":
+    parser = ArgumentParser(description="Pi Stats HTTP Server")
+    parser.add_argument("--host", type=str, default="127.0.0.1")
+    parser.add_argument("--port", type=int, default=8000)
+    args = parser.parse_args()
+    vcgm = Vcgencmd()
+    server = HTTPServer((args.host, args.port), Handler)
+    print(f"Starting server at http://{args.host}:{args.port}")
+    server.serve_forever()
